@@ -70,7 +70,7 @@ class HomePage extends StatelessWidget {
                                           children: [
                                             Text(book.label, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),),
                                             Text(book.detail,
-                                              style: TextStyle(color: Colors.blueGrey),
+                                              style: TextStyle(color: Colors.blueGrey, fontFamily: 'RaleWay', fontWeight: FontWeight.w700),
                                               maxLines: 4,overflow: TextOverflow.ellipsis,),
                                             Row(
                                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -103,7 +103,50 @@ class HomePage extends StatelessWidget {
                       ));
                   }
               )
-            )
+            ),
+            Align(
+                alignment: Alignment.topLeft,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 10, top: 10, bottom: 10),
+                  child: Text('You may also like',style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),),
+                )),
+            SizedBox(height: 20,),
+            Container(
+                height: 250,
+                width: double.infinity,
+                child: ListView.builder(
+                    physics: BouncingScrollPhysics(),
+                    scrollDirection: Axis.horizontal,
+                    itemCount: books.length,
+                    itemBuilder: (context, index){
+                      final book = books[index];
+                      return Container(
+                        margin: EdgeInsets.only(left: index == 0 ? 10: 0),
+                          width: 170,
+                          height: 250,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(15),
+                                child: Image.network(book.image,
+                                  height: 170,
+                                  width: 140,
+                                  fit: BoxFit.cover,),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(vertical: 7),
+                                child: Text(book.label,
+                                  maxLines: 2,
+                                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14,),),
+                              ),
+                              Text(book.genre, style: TextStyle(color:Colors.blueGrey, fontWeight: FontWeight.w500),),
+                            ],
+                          ));
+                    }
+                )
+            ),
+
           ],
         )
 

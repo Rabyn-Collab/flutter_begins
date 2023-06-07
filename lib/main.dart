@@ -16,7 +16,8 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-       theme: ThemeData.light(
+       theme: ThemeData(
+         fontFamily: 'RaleWay'
        ).copyWith(
           scaffoldBackgroundColor:  Color(0xFFF2F5F9),
          appBarTheme: AppBarTheme(

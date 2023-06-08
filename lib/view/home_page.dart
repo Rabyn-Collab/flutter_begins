@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterflutter/models/book.dart';
+import 'package:flutterflutter/view/detail_page.dart';
+import 'package:get/get.dart';
 
 
 
@@ -120,29 +122,34 @@ class HomePage extends StatelessWidget {
                     itemCount: books.length,
                     itemBuilder: (context, index){
                       final book = books[index];
-                      return Container(
-                        margin: EdgeInsets.only(left: index == 0 ? 10: 0),
-                          width: 170,
-                          height: 250,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(15),
-                                child: Image.network(book.image,
-                                  height: 170,
-                                  width: 140,
-                                  fit: BoxFit.cover,),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(vertical: 7),
-                                child: Text(book.label,
-                                  maxLines: 2,
-                                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14,),),
-                              ),
-                              Text(book.genre, style: TextStyle(color:Colors.blueGrey, fontWeight: FontWeight.w500),),
-                            ],
-                          ));
+                      return InkWell(
+                        onTap: (){
+                          Get.to(() => DetailPage(book), transition: Transition.leftToRight);
+                        },
+                        child: Container(
+                          margin: EdgeInsets.only(left: index == 0 ? 10: 0),
+                            width: 170,
+                            height: 250,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(15),
+                                  child: Image.network(book.image,
+                                    height: 170,
+                                    width: 140,
+                                    fit: BoxFit.cover,),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(vertical: 7),
+                                  child: Text(book.label,
+                                    maxLines: 2,
+                                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14,),),
+                                ),
+                                Text(book.genre, style: TextStyle(color:Colors.blueGrey, fontWeight: FontWeight.w500),),
+                              ],
+                            )),
+                      );
                     }
                 )
             ),

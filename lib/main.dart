@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterflutter/view/home_page.dart';
+import 'package:get/get.dart';
 
 
 void main (){
@@ -14,7 +15,7 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
        theme: ThemeData(
          fontFamily: 'RaleWay'
